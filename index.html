@@ -299,8 +299,9 @@
     border:1px solid rgba(255,255,255,.06);
   }
   .card:hover{ transform:translateY(-8px) rotate(-.6deg); box-shadow:0 24px 50px rgba(0,0,0,.35); }
-  .card-1{ grid-column:span 3; background:linear-gradient(135deg,#7A3FF2,#B794F6); }
-  .card-2{ grid-column:span 3; background:linear-gradient(135deg,#FF3EA5,#FF8A65); }
+.card-1{ grid-column:span 2; background:linear-gradient(135deg,#7A3FF2,#B794F6); }
+.card-2{ grid-column:span 2; background:linear-gradient(135deg,#FF3EA5,#FF8A65); }
+.card-3{ grid-column:span 2; background:linear-gradient(135deg,#049E7F,#22D3EE); }
   .card-dashed{
     grid-column:span 6;
     background:transparent;
@@ -311,10 +312,10 @@
   .card-dashed .tag{ background:rgba(6,214,160,.15); color:var(--mint); }
   .card-dashed h3{ color:var(--paper); }
   .card-dashed p{ color:var(--text-dim); }
-  @media (max-width:820px){
-    .bento{ grid-template-columns:1fr; }
-    .card-1,.card-2,.card-dashed{ grid-column:span 1; }
-  }
+@media (max-width:820px){
+  .bento{ grid-template-columns:1fr; }
+  .card-1,.card-2,.card-3,.card-dashed{ grid-column:span 1; }
+}
   .card .tag{
     font-family:'JetBrains Mono', monospace;
     font-size:.72rem;
@@ -544,6 +545,18 @@
         <div class="stack-row">
           <span class="stack-pill">Claude Vision API</span>
           <span class="stack-pill">Mobile UI</span>
+        </div>
+      </div>
+<div class="card card-3 reveal">
+        <span class="tag">HEALTHTECH</span>
+        <h3>Электронная очередь</h3>
+        <p>Система для поликлиник: пациент сканирует QR-код у кабинета, попадает
+        на страницу своей очереди и видит, сколько человек осталось до него.
+        У врачей — отдельный экран с кнопкой вызова следующего пациента.</p>
+        <div class="stack-row">
+          <span class="stack-pill">Claude Code</span>
+          <span class="stack-pill">QR-код</span>
+          <span class="stack-pill">Real-time очередь</span>
         </div>
       </div>
       <div class="card card-dashed reveal">
