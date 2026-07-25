@@ -302,6 +302,8 @@
 .card-1{ grid-column:span 2; background:linear-gradient(135deg,#7A3FF2,#B794F6); }
 .card-2{ grid-column:span 2; background:linear-gradient(135deg,#FF3EA5,#FF8A65); }
 .card-3{ grid-column:span 2; background:linear-gradient(135deg,#049E7F,#22D3EE); }
+.card-finance{ grid-column:span 3; background:linear-gradient(135deg,#F7A93B,#2FBF71); }
+.card-docs{ grid-column:span 3; background:linear-gradient(135deg,#5B5FEF,#9B6BFF); }
   .card-dashed{
     grid-column:span 6;
     background:transparent;
@@ -314,7 +316,7 @@
   .card-dashed p{ color:var(--text-dim); }
 @media (max-width:820px){
   .bento{ grid-template-columns:1fr; }
-  .card-1,.card-2,.card-3,.card-dashed{ grid-column:span 1; }
+  .card-1,.card-2,.card-3,.card-finance,.card-docs,.card-dashed{ grid-column:span 1; }
 }
   .card .tag{
     font-family:'JetBrains Mono', monospace;
@@ -560,6 +562,30 @@
           <span class="stack-pill">Claude Code</span>
           <span class="stack-pill">QR-код</span>
           <span class="stack-pill">Real-time очередь</span>
+        </div>
+      </div>
+      <div class="card card-finance reveal">
+        <span class="tag">FINANCE</span>
+        <h3>Finance Manager</h3>
+        <p>Персональный учёт расходов и доходов по категориям — жильё, здоровье,
+        транспорт, еда и другое. Показывает статистику за выбранный период
+        и помогает наглядно увидеть, на чём можно сэкономить.</p>
+        <div class="stack-row">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">FastAPI</span>
+          <span class="stack-pill">SQLite</span>
+        </div>
+      </div>
+      <div class="card card-docs reveal">
+        <span class="tag">AI / OCR</span>
+        <h3>Document Recognizer</h3>
+        <p>Система распознавания документов на базе Claude Vision API: сканирует
+        фото или скан документа и автоматически извлекает из него нужные поля
+        в структурированном виде — без ручного ввода данных.</p>
+        <div class="stack-row">
+          <span class="stack-pill">Claude Vision API</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">OCR</span>
         </div>
       </div>
       <div class="card card-dashed reveal">
