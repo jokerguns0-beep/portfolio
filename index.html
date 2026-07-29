@@ -23,6 +23,7 @@
     --coral:#FF6B6B;
     --ink:#F3F1FF;
     --dim:#9B93C4;
+    --sky:#38BDF8;
     --border:rgba(255,255,255,.08);
     --radius:22px;
     --warp:0;
@@ -271,19 +272,41 @@
   .card{
     grid-column:span 3;
     padding:32px;
-    transition:transform .4s cubic-bezier(.2,.8,.3,1), border-color .4s;
+    --accent:var(--cyan);
+    transition:transform .4s cubic-bezier(.2,.8,.3,1), border-color .4s, box-shadow .4s;
   }
-  .card:hover{ transform:translateY(-8px); border-color:rgba(255,255,255,.2); }
-  .card-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+  .card::after{
+    content:''; position:absolute; top:0; left:14%; right:14%; height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity:.7;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    border-color:color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow:0 22px 50px -20px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .card-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:22px; }
+  .card-icon{
+    width:54px; height:54px; border-radius:16px; position:relative;
+    display:flex; align-items:center; justify-content:center; font-size:1.35rem;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 28%, transparent), transparent 72%);
+    border:1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .card-icon::before{
+    content:''; position:absolute; inset:-7px; border-radius:50%;
+    border:1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+    animation:spin 14s linear infinite;
+  }
+  @keyframes spin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
   .card .tag{
     font-family:'JetBrains Mono', monospace; font-size:.68rem; font-weight:700;
     letter-spacing:.06em; text-transform:uppercase;
     padding:5px 12px; border-radius:999px;
-    border:1px solid var(--border); color:var(--dim);
+    border:1px solid color-mix(in srgb, var(--accent) 40%, transparent); color:var(--accent);
   }
   .status{ display:inline-flex; align-items:center; gap:7px; font-family:'JetBrains Mono', monospace; font-size:.66rem; color:var(--mint); text-transform:uppercase; letter-spacing:.08em; }
   .status i{ width:6px; height:6px; border-radius:50%; background:var(--mint); box-shadow:0 0 6px 1px var(--mint); animation:blink 2.2s infinite; font-style:normal; }
-  .card h3{ font-weight:700; font-size:1.35rem; margin-bottom:12px; color:var(--ink); }
+  .card h3{ font-weight:700; font-size:1.35rem; margin:16px 0 12px; color:var(--ink); }
   .card p{ color:var(--dim); line-height:1.7; font-size:.96rem; }
   .stack-row{ margin-top:22px; display:flex; gap:8px; flex-wrap:wrap; }
   .stack-pill{
@@ -402,7 +425,7 @@
       <a href="#contact" class="btn btn-ghost magnetic">Написать мне</a>
     </div>
     <div class="hero-hud">
-      <div class="hud-stat"><div class="num">06</div><div class="label">запущенных систем</div></div>
+      <div class="hud-stat"><div class="num">07</div><div class="label">запущенных систем</div></div>
       <div class="hud-stat"><div class="num">11</div><div class="label">класс, Фергана</div></div>
       <div class="hud-stat"><div class="num">3</div><div class="label">профильных предмета</div></div>
     </div>
@@ -410,8 +433,8 @@
 
   <div class="ticker-wrap">
     <div class="ticker">
-      <span><i>★</i>VIBE CODING<i>★</i>FASTAPI<i>★</i>CLAUDE CODE<i>★</i>PYTHON<i>★</i>TAILWIND<i>★</i>МАТЕМАТИКА<i>★</i>ФИЗИКА<i>★</i></span>
-      <span><i>★</i>VIBE CODING<i>★</i>FASTAPI<i>★</i>CLAUDE CODE<i>★</i>PYTHON<i>★</i>TAILWIND<i>★</i>МАТЕМАТИКА<i>★</i>ФИЗИКА<i>★</i></span>
+      <span><i>★</i>VIBE CODING<i>★</i>FASTAPI<i>★</i>CLAUDE CODE<i>★</i>PYTHON<i>★</i>TAILWIND<i>★</i>BANDIT<i>★</i>GEMINI API<i>★</i>МАТЕМАТИКА<i>★</i>ФИЗИКА<i>★</i></span>
+      <span><i>★</i>VIBE CODING<i>★</i>FASTAPI<i>★</i>CLAUDE CODE<i>★</i>PYTHON<i>★</i>TAILWIND<i>★</i>BANDIT<i>★</i>GEMINI API<i>★</i>МАТЕМАТИКА<i>★</i>ФИЗИКА<i>★</i></span>
     </div>
   </div>
 
@@ -462,11 +485,12 @@
     </div>
     <div class="bento">
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--cyan)">
         <div class="card-top">
-          <span class="tag">WEB APP</span>
+          <span class="card-icon">💱</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">WEB APP</span>
         <h3>Smart Currency Converter</h3>
         <p>Конвертер валют с ИИ-аналитикой: не просто курс, а объяснение трендов
         и подсказки по конвертации в реальном времени.</p>
@@ -477,11 +501,12 @@
         </div>
       </div>
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--magenta)">
         <div class="card-top">
-          <span class="tag">MOBILE-FIRST</span>
+          <span class="card-icon">🔍</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">MOBILE-FIRST</span>
         <h3>SOSTAV</h3>
         <p>Сканер состава продуктов на Claude Vision API с оценкой безопасности
         и тёмным UI.</p>
@@ -491,11 +516,12 @@
         </div>
       </div>
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--mint)">
         <div class="card-top">
-          <span class="tag">HEALTHTECH</span>
+          <span class="card-icon">🏥</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">HEALTHTECH</span>
         <h3>Электронная очередь</h3>
         <p>Система для поликлиник: пациент сканирует QR-код у кабинета, попадает
         на страницу своей очереди и видит, сколько человек осталось до него.
@@ -507,11 +533,12 @@
         </div>
       </div>
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--gold)">
         <div class="card-top">
-          <span class="tag">FINANCE</span>
+          <span class="card-icon">💰</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">FINANCE</span>
         <h3>Finance Manager</h3>
         <p>Персональный учёт расходов и доходов по категориям — жильё, здоровье,
         транспорт, еда и другое. Показывает статистику за выбранный период
@@ -523,11 +550,12 @@
         </div>
       </div>
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--violet-soft)">
         <div class="card-top">
-          <span class="tag">AI / OCR</span>
+          <span class="card-icon">📄</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">AI / OCR</span>
         <h3>Document Recognizer</h3>
         <p>Система распознавания документов на базе Claude Vision API: сканирует
         фото или скан документа и автоматически извлекает из него нужные поля
@@ -539,11 +567,12 @@
         </div>
       </div>
 
-      <div class="card glass reveal">
+      <div class="card glass reveal" style="--accent:var(--coral)">
         <div class="card-top">
-          <span class="tag">AI / ACCESSIBILITY</span>
+          <span class="card-icon">🤟</span>
           <span class="status"><i></i>active</span>
         </div>
+        <span class="tag">AI / ACCESSIBILITY</span>
         <h3>Sign_Translator</h3>
         <p>Приложение, которое распознаёт жесты глухонемых людей в реальном времени,
         показывает распознанный жест на экране и озвучивает его — переводит
@@ -552,6 +581,26 @@
           <span class="stack-pill">Computer Vision</span>
           <span class="stack-pill">Python</span>
           <span class="stack-pill">Text-to-Speech</span>
+        </div>
+      </div>
+
+      <div class="card glass reveal" style="--accent:var(--sky)">
+        <div class="card-top">
+          <span class="card-icon">🛡️</span>
+          <span class="status"><i></i>active</span>
+        </div>
+        <span class="tag">SECURITY / DESKTOP</span>
+        <h3>CodeAuditor</h3>
+        <p>Настольное приложение для глубокого аудита кода: находит уязвимости,
+        проверяет сторонние зависимости и проводит интеллектуальный код-ревью
+        с помощью ИИ, сохраняя историю сканирований и экспортируя отчёты.</p>
+        <div class="stack-row">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">PyQt</span>
+          <span class="stack-pill">Bandit</span>
+          <span class="stack-pill">pip-audit</span>
+          <span class="stack-pill">Gemini API</span>
+          <span class="stack-pill">SQLite</span>
         </div>
       </div>
 
@@ -871,7 +920,7 @@
       scene.add(planetGroup);
 
       /* ---- orbiting satellites: one per shipped project ---- */
-      const satColors = [0x22D3EE, 0xFF3EA5, 0x06D6A0, 0xFFD166, 0xB794F6, 0xFF6B6B];
+      const satColors = [0x22D3EE, 0xFF3EA5, 0x06D6A0, 0xFFD166, 0xB794F6, 0xFF6B6B, 0x38BDF8];
       const pivots = [];
       satColors.forEach((color, i)=>{
         const pivot = new THREE.Object3D();
